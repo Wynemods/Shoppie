@@ -1,0 +1,54 @@
+### Register user
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "username": "Wynemods77",
+  "email": "wynemods77@gmail.com",
+  "password": "1234567"
+}
+
+### Login user
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "Wynemods77",
+  "password": "1234567"
+}
+
+### Access protected profile route with token
+GET http://localhost:3000/auth/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ild5bmVtb2RzNzciLCJzdWIiOjEsImlhdCI6MTc1MDMyNTA0MCwiZXhwIjoxNzUwMzI4NjQwfQ.puPzJcYaJDz23ydvcw1tXbfi0a8sXJJzb9hccW_ZqS0
+
+###Logout user
+POST http://localhost:3000/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ild5bmVtb2RzNzciLCJzdWIiOjEsImlhdCI6MTc1MDMyNTA0MCwiZXhwIjoxNzUwMzI4NjQwfQ.puPzJcYaJDz23ydvcw1tXbfi0a8sXJJzb9hccW_ZqS0
+
+###Password reset request
+POST http://localhost:3000/auth/password-reset
+Content-Type: application/json
+
+{
+  "email": "wynemods77@gmail.com"
+}
+
+###Change password
+POST http://localhost:3000/auth/change-password
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ild5bmVtb2RzNzciLCJzdWIiOjEsImlhdCI6MTc1MDMyNTA0MCwiZXhwIjoxNzUwMzI4NjQwfQ.puPzJcYaJDz23ydvcw1tXbfi0a8sXJJzb9hccW_ZqS0
+
+{
+  "username": "Wynemods77",
+  "oldPassword": "Alexmods",
+  "newPassword": "Alexmoods"
+}
+
+###Refresh token
+
+POST http://localhost:3000/auth/refresh-token
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ild5bmVtb2RzNzciLCJzdWIiOjEsImlhdCI6MTc1MDMyNTA0MCwiZXhwIjoxNzUwMzI4NjQwfQ.puPzJcYaJDz23ydvcw1tXbfi0a8sXJJzb9hccW_ZqS0"
+}
