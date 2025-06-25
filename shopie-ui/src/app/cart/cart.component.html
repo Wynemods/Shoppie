@@ -1,0 +1,8 @@
+<div *ngIf="cartItems.length === 0">Your cart is empty.</div>
+<div *ngFor="let item of cartItems" class="cart-item">
+  <h3>{{ item.product?.name }}</h3>
+  <p>Price: \${{ (item.product?.price ?? 0).toFixed(2) }}</p>
+  <p>Quantity: {{ item.quantity }}</p>
+  <img [src]="item.product?.image" alt="{{ item.product?.name }}" width="100" />
+</div>
+<p *ngIf="cartItems.length > 0"><strong>Total: \${{ getTotal().toFixed(2) }}</strong></p>

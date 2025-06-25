@@ -1,0 +1,49 @@
+<div class="admin-product-management">
+  <h2>Admin Product Management</h2>
+
+  <button (click)="startAddProduct()">Add New Product</button>
+
+  <div *ngIf="editingProduct" class="product-form">
+    <h3>{{ isNewProduct ? 'Add Product' : 'Edit Product' }}</h3>
+    <form (ngSubmit)="saveProduct()">
+      <label>
+        Name:
+        <input [(ngModel)]="editingProduct.name" name="name" required />
+      </label>
+      <label>
+        Short Description:
+        <input [(ngModel)]="editingProduct.shortDescription" name="shortDescription" required />
+      </label>
+      <label>
+        Price:
+        <input type="number" [(ngModel)]="editingProduct.price" name="price" required />
+      </label>
+      <label>
+        Image URL:
+        <input [(ngModel)]="editingProduct.image" name="image" required />
+      </label>
+      <label>
+        Upload Image:
+        <input type="file" (change)="onFileSelected($event)" />
+      </label>
+      <label>
+        Stock:
+        <input type="number" [(ngModel)]="editingProduct.stock" name="stock" required />
+      </label>
+      <button type="submit">Save</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </form>
+  </div>
+
+  <ul>
+    <li *ngFor="let product of products">
+      <h4>{{ product.name }}</h4>
+      <p>{{ product.shortDescription }}</p>
+      <p>Price: {{ product.price | currency }}</p>
+      <img [src]="product.image" alt="{{ product.name }}" width="100" />
+      <p>Stock: {{ product.stock }}</p>
+      <button (click)="startEditProduct(product)">Edit</button>
+      <button (click)="deleteProduct(product)">Delete</button>
+    </li>
+  </ul>
+</div>
